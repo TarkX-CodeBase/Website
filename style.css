@@ -140,12 +140,11 @@ nav a:hover {
 }
 
 
-
 /* Gallery Section */
 .gallery-section {
   background: url("images/navy_wallpaper_1.jpg") center/cover no-repeat fixed;
-  min-height: 100vh;  /* ensures full viewport height */
-  padding: 80px 20px; /* adjust top/bottom padding */
+  min-height: 100vh;           /* full viewport height */
+  padding: 80px 20px;          /* top/bottom padding */
   color: white;
   text-align: center;
   display: flex;
@@ -165,18 +164,18 @@ nav a:hover {
   display: flex;
   justify-content: center;
   gap: 30px;
-  flex-wrap: nowrap;  /* keep all tiles in a single row */
-  overflow-x: auto;   /* scroll if screen is smaller */
+  flex-wrap: wrap;             /* allow wrapping on small screens */
   padding-bottom: 20px;
 }
 
 /* Tile styling */
 .tile {
-  background: rgba(0,0,0,0.6);  /* semi-transparent tile over background */
+  background: rgba(0,0,0,0.6);
   border-radius: 10px;
   overflow: hidden;
-  width: 300px;
-  flex: 0 0 auto;   /* ensures tiles don't shrink */
+  width: 100%;
+  max-width: 300px;            /* shrink on smaller screens */
+  flex: 0 1 auto;              /* allows flexbox to shrink */
   text-align: left;
   box-shadow: 0 5px 15px rgba(0,0,0,0.5);
   transition: transform 0.3s, box-shadow 0.3s;
@@ -208,6 +207,45 @@ nav a:hover {
 .tile:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .gallery-section {
+    padding: 60px 15px;
+    background-attachment: scroll;  /* fixes mobile background issues */
+  }
+
+  .gallery-section h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .tile-text h3 {
+    font-size: 18px;
+  }
+
+  .tile-text p {
+    font-size: 14px;
+  }
+
+  .tile {
+    max-width: 250px;       /* smaller tiles on tablets/small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .tile {
+    max-width: 200px;       /* even smaller tiles on phones */
+  }
+
+  .tile-text h3 {
+    font-size: 16px;
+  }
+
+  .tile-text p {
+    font-size: 13px;
+  }
 }
 
 
